@@ -22,6 +22,7 @@ while True:
             print("Quote and Author added.")
         except:
             print("invalid input")
+
     elif inp == "2":
         count = 1
         print("\nQuotes and Authors")
@@ -37,6 +38,7 @@ while True:
                 print(list[int(sp) - 1].get("quote"), " - ", list[int(sp) - 1].get("author"))
         except:
             print("invalid input")
+
     elif inp == "3":
         found = False
         search = input("Search for quote or author: ").lower()

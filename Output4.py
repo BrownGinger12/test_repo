@@ -1,12 +1,19 @@
 import re
-from re import search
+import random
 
-list = [{"quote": "Consummatum Es", "author": "Jose rizal"},
-        {"quote": "I am you, you are me", "author": "Juan Dela Cruz"},
-        {"quote": "No I am me, you are you", "author": "Hwan Dila Cruz"}]
+list = [{"quote": "The only way to do great work is to love what you do.", "author": "Steve Jobs"},
+        {"quote": "Success is not final, failure is not fatal: it is the courage to continue that counts.", "author": "Winston Churchill"},
+        {"quote": "In the middle of every difficulty lies opportunity.", "author": "Albert Einstein"},
+        {"quote": "Do what you can, with what you have, where you are.", "author": "Theodore Roosevelt"},
+        {"quote": "It does not matter how slowly you go as long as you do not stop.", "author": "Confucius"},
+        {"quote": "The best way to predict the future is to create it.", "author": "Peter Drucker"},
+        {"quote": "Happiness depends upon ourselves.", "author": "Aristotle"},
+        {"quote": "Do not go where the path may lead, go instead where there is no path and leave a trail.", "author": "Ralph Waldo Emerson"},
+        {"quote": "Everything you’ve ever wanted is on the other side of fear.", "author": "George Addair"},
+        {"quote": "Opportunities don't happen. You create them.", "author": "Chris Grosser"}]
 
 while True:
-    inp = input("\nWhat do you want to do? \n[1] Add new quote and author \n[2] Show the quote that you like \n[3] Search for a quote or author \ninput: ")
+    inp = input("\nWhat do you want to do? \n[1] Add new quote and author \n[2] Show the quote that you like \n[3] Search for a quote or author \n[4] Random quote \ninput: ")
 
     if inp == "1":
         quote = input("input quote and author: ")
@@ -22,6 +29,7 @@ while True:
             print("Quote and Author added.")
         except:
             print("invalid input")
+
     elif inp == "2":
         count = 1
         print("\nQuotes and Authors")
@@ -37,7 +45,9 @@ while True:
                 print(list[int(sp) - 1].get("quote"), " - ", list[int(sp) - 1].get("author"))
         except:
             print("invalid input")
+
     elif inp == "3":
+        found = False
         search = input("Search for quote or author: ").lower()
         for li in list:
             match_auth = re.search(search, li.get("author").lower())
@@ -46,6 +56,12 @@ while True:
             if match_auth or match_quote:
                 print(li.get("quote"), " - ", li.get("author"))
                 found = True
+
+        if not found:
+            print("No quotes or authors found")
+    elif inp == "4":
+        res = random.randint(0, len(list) - 1)
+        print("random quote: ", list[res].get("quote"), " - ", list[res].get("author"))
 
     elif inp == "q":
         print("Program terminated")
