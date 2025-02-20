@@ -1,6 +1,6 @@
 list = []
 
-n = int(input("enter list size: "))
+n = int(input("enter dict_list size: "))
 
 for i in range(n):
 
