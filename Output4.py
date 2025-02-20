@@ -38,7 +38,6 @@ while True:
         except:
             print("invalid input")
     elif inp == "3":
-        found = False
         search = input("Search for quote or author: ").lower()
         for li in list:
             match_auth = re.search(search, li.get("author").lower())
@@ -48,8 +47,6 @@ while True:
                 print(li.get("quote"), " - ", li.get("author"))
                 found = True
 
-        if not found:
-            print("No quotes or authors found")
     elif inp == "q":
         print("Program terminated")
         break
