@@ -4,14 +4,23 @@ dict_list = []
 
 
 
+def show_quotes():
+    quote_count = 1
+    print("\nQuotes and Authors")
+    for li in dict_list:
+        print("Author: ", li["author"], "\nQuotes: ")
+        for qu in li["quotes"]:
+            print(quote_count, ". ", qu)
+            quote_count += 1
+        print("\n")
+
 def write_to_text(text):
     f = open("Author.txt", "w")
     f.writelines(text)
 
-def convert_to_list():
+def convert_to_dict_list():
 
     dict_list.clear()
-
     f = open("Author.txt", "r")
     text = f.read()
 
@@ -30,7 +39,7 @@ def convert_to_list():
                     new_auth = {"author": split_val[0], "quotes": [split_val[1]]}
                     dict_list.append(new_auth)
 
-def save_auth_quote(list):
+def save_auth_quote():
     text_to_write = ""
 
     for li in dict_list:
@@ -41,7 +50,7 @@ def save_auth_quote(list):
 
 
 while True:
-    convert_to_list()
+    convert_to_dict_list()
     inp = input(
         "\nWhat do you want to do? \n[1] Add new quote and author \n[2] Show the quote that you like \n[3] Search for a quote or author\n[4] Delete quote or author \n[5] Edit quote or author \n[6] Show all quotes in text file \ninput: ")
 
@@ -267,5 +276,5 @@ while True:
     else:
         print("invalid input")
 
-    save_auth_quote(dict_list)
+    save_auth_quote()
 
